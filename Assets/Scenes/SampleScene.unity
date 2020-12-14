@@ -1283,7 +1283,7 @@ GameObject:
   - component: {fileID: 689440905}
   - component: {fileID: 689440904}
   m_Layer: 0
-  m_Name: terrain sur terre 2
+  m_Name: terrain d'eau 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6679,7 +6679,7 @@ GameObject:
   - component: {fileID: 1326855182}
   - component: {fileID: 1326855181}
   m_Layer: 0
-  m_Name: terrain d'eau 2
+  m_Name: terrain sur terre 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6740,7 +6740,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c22777d6e868e4f2fb421913386b154e, type: 2}
+  - {fileID: 2100000, guid: 7a00d73fb1785d641b99ae41cd898af0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
