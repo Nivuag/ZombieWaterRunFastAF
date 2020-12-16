@@ -2506,35 +2506,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3949657970244338483, guid: 886d96ea4b51d45448bfd5a21fb3ba91, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 36.46
+      value: 33.06
       objectReference: {fileID: 0}
     - target: {fileID: 3949657970244338483, guid: 886d96ea4b51d45448bfd5a21fb3ba91, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.70918185
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3949657970244338483, guid: 886d96ea4b51d45448bfd5a21fb3ba91, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.15379421
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3949657970244338483, guid: 886d96ea4b51d45448bfd5a21fb3ba91, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.23884875
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3949657970244338483, guid: 886d96ea4b51d45448bfd5a21fb3ba91, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.6452595
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3949657970244338483, guid: 886d96ea4b51d45448bfd5a21fb3ba91, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -5.17
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3949657970244338483, guid: 886d96ea4b51d45448bfd5a21fb3ba91, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 32.646
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3949657970244338483, guid: 886d96ea4b51d45448bfd5a21fb3ba91, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 83.081
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3949657970244338486, guid: 886d96ea4b51d45448bfd5a21fb3ba91, type: 3}
       propertyPath: m_Name
@@ -4970,7 +4970,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-10274
+  m_Name: pb_Mesh-6708
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
