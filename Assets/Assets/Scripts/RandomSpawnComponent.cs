@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class RandomSpawnComponent : MonoBehaviour
 {
-    public GameObject SpawnPoint;
-    void Awake()
+    public GameObject spawnPoint;
+    void Start()
     {
         ObjectsPoolComponent pool = this.GetComponent<ObjectsPoolComponent>();
         for (int i = 0; i < pool.poolSize; i++)
         {
-            GameObject okBoomer ;
+
+            pool.GetObject().transform.position = spawnPoint.transform.position;
         }
     }
 }
