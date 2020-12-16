@@ -10,7 +10,7 @@ public class RandomSpawnComponent : MonoBehaviour
         ObjectsPoolComponent pool = this.GetComponent<ObjectsPoolComponent>();
         for (int i = 0; i < pool.poolSize; i++)
         {
-            GameObject ok ;
+            GameObject okBoomer ;
         }
     }
 }
