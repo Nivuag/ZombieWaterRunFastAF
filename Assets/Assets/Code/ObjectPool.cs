@@ -1,18 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class ObjectPool : MonoBehaviour
+using System;
+using System.Collections.Concurrent;
+public class BagEmptyException : ApplicationException { }
+public class ObjectPool<T>
 {
-    // Start is called before the first frame update
-    void Start()
+    public ObjectPool()
     {
-        
+        Objects = new ConcurrentBag<T>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private ConcurrentBag<T> Objects { get; set; }
+
+    public T GetObject()
     {
-        
+        T selectedObject;
+        if (!Objects.TryTake(out selectedObject))
+            throw new BagEmptyException();
+        return selectedObject;
+    }
+
+    public void PutObject(T objectToPut)
+    {
+        Objects.Add(objectToPut);
     }
 }

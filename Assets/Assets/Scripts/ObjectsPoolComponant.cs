@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectPoolComponent : MonoBehaviour
+public class ObjectsPoolComponent : MonoBehaviour
 {
     public GameObject objectToPool;
     public int poolSize = 20;
