@@ -24,9 +24,9 @@ public class ObjectsPoolComponent : MonoBehaviour
         for (int i = 0; i < poolSize; ++i)
         {
             var newObject = Instantiate(objectToPool, transform);
-            newObject.GetComponent<IPoolable>().AssociatedPool = this;
+            //newObject.GetComponent<IPoolable>().AssociatedPool = this;
             newObject.name = $"{namePrefix} {i}";
-            newObject.SetActive(false);
+            newObject.SetActive(true);
             objectPool.PutObject(newObject);
         }
     }

@@ -5,5 +5,7 @@ using UnityEngine;
 public class BarrelComponent : MonoBehaviour, IPoolable
 {
     public ObjectsPoolComponent AssociatedPool { get; set; }
-  
+
+    
+
 }
