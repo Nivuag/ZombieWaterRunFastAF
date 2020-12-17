@@ -1629,6 +1629,7 @@ GameObject:
   - component: {fileID: 759235931}
   - component: {fileID: 759235930}
   - component: {fileID: 759235934}
+  - component: {fileID: 759235935}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -1741,6 +1742,20 @@ MonoBehaviour:
   sprinting: 0
   swimming: 0
   speed: 0
+--- !u!114 &759235935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 759235929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 163acf351561fbc42b3f63eb277075b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprintDuration: 10
+  sprintRechargeRate: 2
 --- !u!1 &859021603
 GameObject:
   m_ObjectHideFlags: 0
