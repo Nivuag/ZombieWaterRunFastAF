@@ -17,7 +17,7 @@ public class RandomSpawnComponent : MonoBehaviour
         Debug.Log("4" + array[3]);
         for (int i = 0; i < pool.poolSize; i++)
         {
-           pool.GetObject().transform.position = new Vector3(Random.Range(array[0].x,array[2].x), spawnPoint.transform.position.y, Random.Range(array[0].y,array[2].y));
+           pool.GetObject().transform.localPosition = new Vector3(Random.Range(0,array[2].x*2), spawnPoint.transform.position.y, Random.Range(0,array[2].y*2));
         }
     }
 }
