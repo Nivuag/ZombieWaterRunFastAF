@@ -6,6 +6,14 @@ public class BarrelComponent : MonoBehaviour, IPoolable
 {
     public ObjectsPoolComponent AssociatedPool { get; set; }
 
-    
-
+    void OnCollisionEnter(Collision collision)
+    {
+        StartCoroutine(DisableBarrel());
+    }
+    IEnumerator DisableBarrel()
+    {
+        yield return new WaitForSeconds(3);
+        gameObject.SetActive(false);
+        AssociatedPool.PutObject(gameObject);
+    }
 }
