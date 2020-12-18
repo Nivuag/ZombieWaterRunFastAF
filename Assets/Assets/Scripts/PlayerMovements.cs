@@ -75,7 +75,7 @@ public class PlayerMovements : MonoBehaviour
             move = transform.forward * verticalMove + horizontalMove * transform.right;
             //Stéphane: ( ͡° ͜ʖ ͡°)ᕤ JE fais bugger le code hihihih.
             //Simon: (ง ͠° ͟ل͜ ͡°)ง Et moi j'le bat à mort ton code, héhéhé!
-            jumpForwardMomentum += move * speed * Time.deltaTime
+            jumpForwardMomentum += move * speed * Time.deltaTime;
             CharacterController.Move(gravityMove * Time.deltaTime + jumpForwardMomentum);
 
         }
