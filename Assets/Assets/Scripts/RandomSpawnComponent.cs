@@ -6,6 +6,8 @@ public class RandomSpawnComponent : MonoBehaviour
 {
     public GameObject spawnPoint;
     ObjectsPoolComponent pool;
+
+    private float elapsedTime = 0;
     void Start()
     {
         pool = this.GetComponent<ObjectsPoolComponent>();
@@ -17,9 +19,12 @@ public class RandomSpawnComponent : MonoBehaviour
     }
     void Update()
     {
-        for (int i = 0; i < pool.poolSize; i++)
+
+        elapsedTime += Time.deltaTime;
+        if(elapsedTime > 3)
         {
-            //if()
+            pool.GetObject().transform.localPosition = RandomPosition(spawnPoint);
+            elapsedTime = 0;
         }
     }
     private Vector3 RandomPosition(GameObject spawnPoint)
