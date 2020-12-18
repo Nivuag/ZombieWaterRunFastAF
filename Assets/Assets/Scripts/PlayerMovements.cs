@@ -63,13 +63,13 @@ public class PlayerMovements : MonoBehaviour
         Vector3 gravityMove = new Vector3(0, verticalSpeed, 0);
         Vector3 jumpMove = new Vector3(0, 0, 0);
         Vector3 move;
-        if (CharacterController.isGrounded)
-        {
+       /* if (CharacterController.isGrounded)
+        {*/
             move = transform.forward * verticalMove + horizontalMove * transform.right;
             CharacterController.Move(speed * Time.deltaTime * move + gravityMove * Time.deltaTime);
-            if(jumpForwardMomentum != Vector3.zero)
+            /*if(jumpForwardMomentum != Vector3.zero)
                 jumpForwardMomentum = Vector3.zero;
-        }
+        }*//*
         else
         {
             move = transform.forward * verticalMove + horizontalMove * transform.right;
@@ -78,7 +78,7 @@ public class PlayerMovements : MonoBehaviour
             jumpForwardMomentum += move * speed * Time.deltaTime;
             CharacterController.Move(gravityMove * Time.deltaTime + jumpForwardMomentum);
 
-        }
+        }*/
 
         
     }
