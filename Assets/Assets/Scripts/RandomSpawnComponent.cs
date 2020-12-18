@@ -6,7 +6,7 @@ public class RandomSpawnComponent : MonoBehaviour
 {
     public GameObject spawnPoint;
     ObjectsPoolComponent pool;
-
+    private List<GameObject> listBarel = new List<GameObject>();
     private float elapsedTime = 0;
     void Start()
     {
@@ -14,7 +14,9 @@ public class RandomSpawnComponent : MonoBehaviour
        
         for (int i = 0; i < pool.poolSize; i++)
         {
-           pool.GetObject().transform.localPosition = RandomPosition(spawnPoint);
+            GameObject barel = pool.GetObject();
+            barel.transform.localPosition = RandomPosition(spawnPoint);
+            listBarel.Add(barel);
         }
     }
     void Update()
@@ -23,7 +25,14 @@ public class RandomSpawnComponent : MonoBehaviour
         elapsedTime += Time.deltaTime;
         if(elapsedTime > 3)
         {
-            pool.GetObject().transform.localPosition = RandomPosition(spawnPoint);
+            foreach (var item in listBarel)
+            {
+                if(!item.active)
+                {
+                    item.transform.localPosition = RandomPosition(spawnPoint);
+                    item.SetActive(true);
+                }
+            }
             elapsedTime = 0;
         }
     }
@@ -33,10 +42,5 @@ public class RandomSpawnComponent : MonoBehaviour
         Vector3[] array = new Vector3[4];
         dimention.GetLocalCorners(array);
         return new Vector3(Random.Range(0, array[2].x * 2), spawnPoint.transform.position.y, Random.Range(0, array[2].y * 2));
-    }
-    IEnumerator Respawn()
-    {
-        yield return new WaitForSeconds(1);
-        pool.GetObject().transform.localPosition = RandomPosition(spawnPoint);
     }
 }
