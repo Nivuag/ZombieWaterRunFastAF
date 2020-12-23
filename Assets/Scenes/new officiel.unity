@@ -52803,7 +52803,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: dfc83c36d6830214f81a2cd3c4a8016e, type: 3}
       propertyPath: m_Name
-      value: fishman
+      value: SWIMMER
       objectReference: {fileID: 0}
     - target: {fileID: 8346489557716569248, guid: dfc83c36d6830214f81a2cd3c4a8016e, type: 3}
       propertyPath: m_Materials.Array.data[0]
