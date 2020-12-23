@@ -6,10 +6,21 @@ public class BarrelComponent : MonoBehaviour, IPoolable
 {
     public ObjectsPoolComponent AssociatedPool { get; set; }
 
-    void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        StartCoroutine(DisableBarrel());
+        //Check to see if the tag on the collider is equal to Enemy
+        if (other.tag == "Player")
+        {
+            Debug.Log("Triggered by Enemy");
+        }
     }
+
+    /*void OnCollisionEnter(Collision collision)
+    {
+       
+            StartCoroutine(DisableBarrel());
+        
+    }*/
     IEnumerator DisableBarrel()
     {
         yield return new WaitForSeconds(2);
