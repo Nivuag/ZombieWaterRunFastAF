@@ -109,9 +109,6 @@ public class PlayerMovements : MonoBehaviour
         {
             Debug.Log(transform.forward);
             move = speed*(cameraHolder.transform.forward * verticalMove + horizontalMove * cameraHolder.transform.right);
-            //Stéphane: ( ͡° ͜ʖ ͡°)ᕤ JE fais bugger le code hihihih.
-            //Simon: (ง ͠° ͟ل͜ ͡°)ง Et moi j'le bat à mort ton code, héhéhé!
-            //jumpForwardMomentum  / 5;
             CharacterController.Move(gravityMove * Time.deltaTime + (move * Time.deltaTime)); //jumpForwardMomentum);
 
         }
