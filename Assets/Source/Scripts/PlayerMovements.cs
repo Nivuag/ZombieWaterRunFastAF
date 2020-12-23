@@ -18,7 +18,7 @@ public class PlayerMovements : MonoBehaviour
 
     public float speed = 0;
 
-    private Vector3 ;
+    //private Vector3 //jumpForwardMomentum;
     private float gravity = 20f;
     private float verticalSpeed = 0;
     private PlayerStatsManager PlayerStats;
@@ -59,9 +59,10 @@ public class PlayerMovements : MonoBehaviour
         if (CharacterController.isGrounded && JumpKeyDown)
         {
             verticalSpeed += gravity * JumpForce;
-             
+            //jumpForwardMomentum = speed * Time.deltaTime * (cameraHolder.transform.forward * verticalMove + horizontalMove * cameraHolder.transform.right);
         }
-
+       
+            //jumpForwardMomentum = Vector3.zero;
 
         Vector3 gravityMove = new Vector3(0, verticalSpeed, 0);
         Vector3 jumpMove = new Vector3(0, 0, 0);
@@ -101,16 +102,17 @@ public class PlayerMovements : MonoBehaviour
             move = cameraHolder.transform.forward * verticalMove + horizontalMove * cameraHolder.transform.right;
             transform.localRotation = Quaternion.Euler(new Vector3 (0, rotation, 0));
             CharacterController.Move(speed * Time.deltaTime * move + gravityMove * Time.deltaTime);
-            /*if( != Vector3.zero)
-                 = Vector3.zero;*/
+            /*if(//jumpForwardMomentum != Vector3.zero)
+                //jumpForwardMomentum = Vector3.zero;*/
         }
         else
         {
-            move = transform.forward * verticalMove + horizontalMove * transform.right;
+            Debug.Log(transform.forward);
+            move = speed*(cameraHolder.transform.forward * verticalMove + horizontalMove * cameraHolder.transform.right);
             //Stéphane: ( ͡° ͜ʖ ͡°)ᕤ JE fais bugger le code hihihih.
             //Simon: (ง ͠° ͟ل͜ ͡°)ง Et moi j'le bat à mort ton code, héhéhé!
-             += (move * Time.deltaTime) / 5;
-            CharacterController.Move(gravityMove * Time.deltaTime + );
+            //jumpForwardMomentum  / 5;
+            CharacterController.Move(gravityMove * Time.deltaTime + (move * Time.deltaTime)); //jumpForwardMomentum);
 
         }
         animator.SetBool("Jumping", !CharacterController.isGrounded);
