@@ -12,6 +12,13 @@ public class BarrelComponent : MonoBehaviour, IPoolable
         StartCoroutine(DisableBarrel());
         
     }
+
+    void OnTriggerEnter(Collider collider)
+    {
+        
+        StartCoroutine(DisableBarrel());
+
+    }
     IEnumerator DisableBarrel()
     {
         yield return new WaitForSeconds(2);
