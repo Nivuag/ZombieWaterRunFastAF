@@ -12,6 +12,7 @@ public class ScoreComponent : MonoBehaviour
     public GameObject gameover;
     public GameObject textFinalScore;
     public GameObject textScore;
+    private PlayerStatsManager playerStats;
 
     void Awake()
     {
@@ -19,11 +20,12 @@ public class ScoreComponent : MonoBehaviour
         finalScore = textFinalScore.GetComponent<Text>();
         gameover.SetActive(false);
         textFinalScore.SetActive(false);
+        playerStats = GameObject.Find("Player").GetComponent<PlayerStatsManager>();
     }
 
     void Update()
     {
-        if (!death)
+        if (playerStats.isAlive)
         {
             scoreValue += Time.deltaTime;
             score.text = "Score : " + Mathf.Round(scoreValue);

@@ -15,4 +15,13 @@ public class EnnemieController : MonoBehaviour, IPoolable
     {
         thisAgent.SetDestination(Player.transform.localPosition);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.layer == 8)
+        {
+            Debug.Log("Game Over");
+            Player.GetComponent<PlayerStatsManager>().isAlive = false;
+        }
+    }
 }
