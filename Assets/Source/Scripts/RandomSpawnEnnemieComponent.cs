@@ -17,7 +17,7 @@ public class RandomSpawnEnnemieComponent : MonoBehaviour
     {
         score += Time.deltaTime;
 
-        if (Mathf.Round(score) > 5 && compteurSpawn <= pool.poolSize)
+        if (Mathf.Round(score) > 5 && compteurSpawn < pool.poolSize)
         {
             GameObject ennemie = pool.GetObject();
             ennemie.transform.localPosition = RandomPosition(spawnPoint);
