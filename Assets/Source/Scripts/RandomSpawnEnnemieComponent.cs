@@ -23,6 +23,7 @@ public class RandomSpawnEnnemieComponent : MonoBehaviour
             ennemie.transform.localPosition = RandomPosition(spawnPoint);
             ennemie.SetActive(true);
             score = 0;
+            compteurSpawn++;
         }
            
     }
