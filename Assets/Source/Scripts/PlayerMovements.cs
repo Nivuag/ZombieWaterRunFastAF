@@ -29,112 +29,120 @@ public class PlayerMovements : MonoBehaviour
 
     private void Move()
     {
-        sprinting = Input.GetKey(KeyCode.LeftShift);
-        bool JumpKeyDown = Input.GetKey(KeyCode.Space);
-        
-        float horizontalMove = Input.GetAxis("Horizontal");
-        float verticalMove = Input.GetAxis("Vertical");
+        if (PlayerStats.isAlive)
+        {
+            bool JumpKeyDown = Input.GetKey(KeyCode.Space);
 
-        sprinting = Input.GetKey(KeyCode.LeftShift) &&( horizontalMove != 0 || verticalMove != 0);
+            float horizontalMove = Input.GetAxis("Horizontal");
+            float verticalMove = Input.GetAxis("Vertical");
+
+            bool running = horizontalMove != 0 || verticalMove != 0;
+
+            sprinting = Input.GetKey(KeyCode.LeftShift) && running && PlayerStats.canSprint;
 
 
-        if (CharacterController.isGrounded)
-            if (sprinting && !swimming && PlayerStats.canSprint)
+            if (CharacterController.isGrounded)
+                if (sprinting && !swimming)
+                {
+                    speed = SPRINTING_SPEED;
+                    PlayerStats.EmptySprint(Time.deltaTime);
+                    if (PlayerStats.CurrentSprintCharge <= 0)
+                        PlayerStats.canSprint = false;
+
+                }
+                else
+                {
+
+                    speed = JOGGING_SPEED;
+                    PlayerStats.RechargeSprint();
+                    if (!PlayerStats.canSprint)
+                        if (PlayerStats.CurrentSprintCharge >= PlayerStats.sprintDuration)
+                            PlayerStats.canSprint = true;
+                }
+            else
+                verticalSpeed -= gravity * Time.deltaTime;
+
+            if (CharacterController.isGrounded)
             {
-                speed = SPRINTING_SPEED;
-                PlayerStats.EmptySprint(Time.deltaTime);
-                if (PlayerStats.CurrentSprintCharge <= 0)
-                    PlayerStats.canSprint = false;
+                timefalled = 0;
 
+                if (JumpKeyDown)
+                {
+                    verticalSpeed += gravity * JumpForce;
+                    animator.SetTrigger("Jumping");
+                }
+                else
+                    animator.ResetTrigger("Jumping");
             }
             else
             {
-
-                speed = JOGGING_SPEED;
-                PlayerStats.RechargeSprint();
-                if (!PlayerStats.canSprint)
-                    if (PlayerStats.CurrentSprintCharge >= PlayerStats.sprintDuration)
-                        PlayerStats.canSprint = true;
+                timefalled += Time.deltaTime;
             }
-        else
-            verticalSpeed -= gravity * Time.deltaTime;
 
-        if (CharacterController.isGrounded)
-        {
-            timefalled = 0;
+            if (timefalled > MIN_TIME_NOT_GROUNDED_REQUIRED_TO_FALL)
+                animator.SetBool("isFalling", true);
+            else
+                animator.SetBool("isFalling", false);
 
-            if (JumpKeyDown)
+
+            //jumpForwardMomentum = Vector3.zero;
+
+            Vector3 gravityMove = new Vector3(0, verticalSpeed, 0);
+            Vector3 jumpMove = new Vector3(0, 0, 0);
+            Vector3 move;
+            if (CharacterController.isGrounded)
             {
-                verticalSpeed += gravity * JumpForce;
-                animator.SetTrigger("Jumping");
+                float rotation = transform.localEulerAngles.y;
+                if (verticalMove < 0)
+                {
+                    if (horizontalMove != 0)
+                    {
+                        rotation = (cameraHolder.transform.localEulerAngles.y) + horizontalMove * -45 - 180;
+                    }
+                    else
+                        rotation = (cameraHolder.transform.localEulerAngles.y) - 180;
+                }
+                else if (verticalMove > 0)
+                {
+                    if (horizontalMove != 0)
+                    {
+                        rotation = (cameraHolder.transform.localEulerAngles.y) + horizontalMove * 45;
+                    }
+                    else
+                        rotation = (cameraHolder.transform.localEulerAngles.y);
+                }
+                else if (horizontalMove != 0)
+                    rotation = (cameraHolder.transform.localEulerAngles.y) + horizontalMove * 90;
+
+
+                move = cameraHolder.transform.forward * verticalMove + horizontalMove * cameraHolder.transform.right;
+                transform.localRotation = Quaternion.Euler(new Vector3(0, rotation, 0));
+                CharacterController.Move(speed * Time.deltaTime * move + gravityMove * Time.deltaTime);
+                /*if(//jumpForwardMomentum != Vector3.zero)
+                    //jumpForwardMomentum = Vector3.zero;*/
             }
             else
-                animator.ResetTrigger("Jumping");
+            {
+                Debug.Log(transform.forward);
+                move = speed * (cameraHolder.transform.forward * verticalMove + horizontalMove * cameraHolder.transform.right);
+                CharacterController.Move(gravityMove * Time.deltaTime + (move * Time.deltaTime)); //jumpForwardMomentum);
+
+            }
+
+            animator.SetBool("isSprinting", sprinting);
+            animator.SetBool("isRunning", running);
+            animator.SetBool("isSwimming", this.gameObject.transform.position.y < -2.50f); // Solution de bastard mais le collider est oof
+
+
         }
         else
         {
-            timefalled += Time.deltaTime;
-        }
-
-        if (timefalled > MIN_TIME_NOT_GROUNDED_REQUIRED_TO_FALL)
-            animator.SetBool("isFalling", true);
-        else
+            animator.SetBool("isSprinting", false);
+            animator.SetBool("isRunning", false);
+            animator.SetBool("isSwimming", false); // Solution de bastard mais le collider est oof
             animator.SetBool("isFalling", false);
-
-
-        //jumpForwardMomentum = Vector3.zero;
-
-        Vector3 gravityMove = new Vector3(0, verticalSpeed, 0);
-        Vector3 jumpMove = new Vector3(0, 0, 0);
-        Vector3 move;
-        if (CharacterController.isGrounded)
-        {
-            float rotation = transform.localEulerAngles.y;
-            if(verticalMove < 0)
-            {
-                if (horizontalMove != 0)
-                {
-                    rotation = (cameraHolder.transform.localEulerAngles.y) + horizontalMove * -45 - 180;
-                }
-                else
-                    rotation = (cameraHolder.transform.localEulerAngles.y) - 180;
-            }
-            else if(verticalMove > 0)
-            {
-                if (horizontalMove != 0)
-                {
-                    rotation = (cameraHolder.transform.localEulerAngles.y) + horizontalMove * 45;
-                }
-                else
-                    rotation = (cameraHolder.transform.localEulerAngles.y);
-            }
-            else if( horizontalMove != 0)
-                rotation = (cameraHolder.transform.localEulerAngles.y) + horizontalMove * 90;
-           
-
-
-
-
-
-
-
-
-            move = cameraHolder.transform.forward * verticalMove + horizontalMove * cameraHolder.transform.right;
-            transform.localRotation = Quaternion.Euler(new Vector3 (0, rotation, 0));
-            CharacterController.Move(speed * Time.deltaTime * move + gravityMove * Time.deltaTime);
-            /*if(//jumpForwardMomentum != Vector3.zero)
-                //jumpForwardMomentum = Vector3.zero;*/
         }
-        else
-        {
-            Debug.Log(transform.forward);
-            move = speed*(cameraHolder.transform.forward * verticalMove + horizontalMove * cameraHolder.transform.right);
-            CharacterController.Move(gravityMove * Time.deltaTime + (move * Time.deltaTime)); //jumpForwardMomentum);
 
-        }
-        
-        animator.SetBool("isSprinting", sprinting && PlayerStats.canSprint);
-        animator.SetFloat("CurrentSpeed", (speed * Time.deltaTime * move).magnitude);
         cameraHolder.transform.position = this.transform.position;
     }
 
@@ -164,6 +172,7 @@ public class PlayerMovements : MonoBehaviour
         Move();
         Rotate();
     }
+
 
     private void Awake()
     {

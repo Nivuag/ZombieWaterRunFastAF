@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerStatsManager: MonoBehaviour
 {
+    public bool isAlive = true;
+
     public bool canSprint = true;
 
     const float MIN_SPRINT_DURATION = 0;

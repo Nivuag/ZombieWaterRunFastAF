@@ -6,19 +6,11 @@ public class BarrelComponent : MonoBehaviour, IPoolable
 {
     public ObjectsPoolComponent AssociatedPool { get; set; }
 
-    void OnCollisionEnter(Collision collision)
+    public void DisableBarrelCoroutine()
     {
-        Debug.Log("MEMES");
         StartCoroutine(DisableBarrel());
-        
     }
 
-    void OnTriggerEnter(Collider collider)
-    {
-        
-        StartCoroutine(DisableBarrel());
-
-    }
     IEnumerator DisableBarrel()
     {
         yield return new WaitForSeconds(2);
