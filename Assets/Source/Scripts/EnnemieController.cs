@@ -10,7 +10,9 @@ public class EnnemieController : MonoBehaviour, IPoolable
     public NavMeshAgent thisAgent;
 
     public ObjectsPoolComponent AssociatedPool { get; set; }
-    // Update is called once per frame
+
+    
+
     void Update()
     {
         thisAgent.SetDestination(Player.transform.localPosition);

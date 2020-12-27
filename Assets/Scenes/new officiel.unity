@@ -261,7 +261,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 28534101}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69274f49fceaf624d829755cab36fe89, type: 3}
+  m_Script: {fileID: 11500000, guid: 56ac620f439b72a44831cc73810e985b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPoint: {fileID: 180214584}
@@ -35926,16 +35926,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 339884950}
     m_Modifications:
     - target: {fileID: 1190327701708237361, guid: 886d96ea4b51d45448bfd5a21fb3ba91, type: 3}
-      propertyPath: m_IsKinematic
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1190327701708237361, guid: 886d96ea4b51d45448bfd5a21fb3ba91, type: 3}
       propertyPath: m_UseGravity
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1190327701708237361, guid: 886d96ea4b51d45448bfd5a21fb3ba91, type: 3}
       propertyPath: m_Constraints
       value: 126
+      objectReference: {fileID: 0}
+    - target: {fileID: 1190327701708237361, guid: 886d96ea4b51d45448bfd5a21fb3ba91, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3949657970244338480, guid: 886d96ea4b51d45448bfd5a21fb3ba91, type: 3}
       propertyPath: m_Mesh
@@ -36082,6 +36082,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 0
 --- !u!223 &590076417
 Canvas:
   m_ObjectHideFlags: 0
@@ -36225,7 +36226,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1192
+  m_Name: pb_Mesh-1530
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -36873,6 +36874,7 @@ Light:
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
+  m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
 --- !u!4 &705507995
@@ -60803,7 +60805,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1061848573}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69274f49fceaf624d829755cab36fe89, type: 3}
+  m_Script: {fileID: 11500000, guid: 56ac620f439b72a44831cc73810e985b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPoint: {fileID: 384185848}
@@ -73679,7 +73681,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1250234989}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69274f49fceaf624d829755cab36fe89, type: 3}
+  m_Script: {fileID: 11500000, guid: 56ac620f439b72a44831cc73810e985b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPoint: {fileID: 859021603}
@@ -100772,7 +100774,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1870091939}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69274f49fceaf624d829755cab36fe89, type: 3}
+  m_Script: {fileID: 11500000, guid: 56ac620f439b72a44831cc73810e985b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPoint: {fileID: 2098017865}
