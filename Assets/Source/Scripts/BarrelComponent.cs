@@ -8,7 +8,6 @@ public class BarrelComponent : MonoBehaviour, IPoolable
 
     void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("MEMES");
         StartCoroutine(DisableBarrel());
         
     }
