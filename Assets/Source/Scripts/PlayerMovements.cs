@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerMovements : MonoBehaviour
 {
+    const float MIN_TIME_NOT_GROUNDED_REQUIRED_TO_FALL = 0.05f;
+
     public Transform cameraHolder;
     public float mouseSensitivity = 2f;
     public float upLimit = -50;
@@ -19,6 +21,7 @@ public class PlayerMovements : MonoBehaviour
     public float speed = 0;
 
     //private Vector3 //jumpForwardMomentum;
+    private float timefalled = 0;
     private float gravity = 20f;
     private float verticalSpeed = 0;
     private PlayerStatsManager PlayerStats;
@@ -28,11 +31,11 @@ public class PlayerMovements : MonoBehaviour
     {
         sprinting = Input.GetKey(KeyCode.LeftShift);
         bool JumpKeyDown = Input.GetKey(KeyCode.Space);
-
+        
         float horizontalMove = Input.GetAxis("Horizontal");
         float verticalMove = Input.GetAxis("Vertical");
 
-
+        sprinting = Input.GetKey(KeyCode.LeftShift) &&( horizontalMove != 0 || verticalMove != 0);
 
 
         if (CharacterController.isGrounded)
@@ -56,13 +59,30 @@ public class PlayerMovements : MonoBehaviour
         else
             verticalSpeed -= gravity * Time.deltaTime;
 
-        if (CharacterController.isGrounded && JumpKeyDown)
+        if (CharacterController.isGrounded)
         {
-            verticalSpeed += gravity * JumpForce;
-            //jumpForwardMomentum = speed * Time.deltaTime * (cameraHolder.transform.forward * verticalMove + horizontalMove * cameraHolder.transform.right);
+            timefalled = 0;
+
+            if (JumpKeyDown)
+            {
+                verticalSpeed += gravity * JumpForce;
+                animator.SetTrigger("Jumping");
+            }
+            else
+                animator.ResetTrigger("Jumping");
         }
-       
-            //jumpForwardMomentum = Vector3.zero;
+        else
+        {
+            timefalled += Time.deltaTime;
+        }
+
+        if (timefalled > MIN_TIME_NOT_GROUNDED_REQUIRED_TO_FALL)
+            animator.SetBool("isFalling", true);
+        else
+            animator.SetBool("isFalling", false);
+
+
+        //jumpForwardMomentum = Vector3.zero;
 
         Vector3 gravityMove = new Vector3(0, verticalSpeed, 0);
         Vector3 jumpMove = new Vector3(0, 0, 0);
@@ -112,7 +132,7 @@ public class PlayerMovements : MonoBehaviour
             CharacterController.Move(gravityMove * Time.deltaTime + (move * Time.deltaTime)); //jumpForwardMomentum);
 
         }
-        animator.SetBool("Jumping", !CharacterController.isGrounded);
+        
         animator.SetBool("isSprinting", sprinting && PlayerStats.canSprint);
         animator.SetFloat("CurrentSpeed", (speed * Time.deltaTime * move).magnitude);
         cameraHolder.transform.position = this.transform.position;
