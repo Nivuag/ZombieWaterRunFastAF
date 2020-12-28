@@ -23,7 +23,7 @@ public class EnnemieController : MonoBehaviour, IPoolable
         if (other.gameObject.layer == 8)
         {
             //Player.GetComponent<PlayerStatsManager>().isAlive = false;
-            PlayerStatsManager.heal--;
+            PlayerStatsManager.heal =- 0.2f;
         }
     }
 }
