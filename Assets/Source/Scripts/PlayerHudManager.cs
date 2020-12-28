@@ -1,18 +1,32 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
 
-public class PlayerHud : MonoBehaviour
+public class PlayerHudManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+        float scoreValue = 0;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+        public bool death = false;
+        public GameObject staminaBar;
+        private Slider slider;
+        private PlayerStatsManager playerStats;
+
+        void Awake()
+        {
+            slider = staminaBar.GetComponent<Slider>();
+            playerStats = GameObject.Find("Player").GetComponent<PlayerStatsManager>();
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            slider.value = playerStats.CurrentSprintCharge / playerStats.sprintDuration;
+            
+        }
+
+
 }
