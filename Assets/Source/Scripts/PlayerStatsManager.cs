@@ -6,6 +6,8 @@ public class PlayerStatsManager: MonoBehaviour
 {
     public bool isAlive = true;
 
+    public static float heal;
+
     public bool canSprint = true;
 
     const float MIN_SPRINT_DURATION = 0;
@@ -15,6 +17,8 @@ public class PlayerStatsManager: MonoBehaviour
     public float sprintRechargeRate = 2;
 
     private float currentSprintCharge;
+
+    private void Start() => heal = 1;
 
     public float CurrentSprintCharge {
         get { return currentSprintCharge; }

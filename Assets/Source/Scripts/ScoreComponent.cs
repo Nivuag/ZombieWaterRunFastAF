@@ -14,6 +14,7 @@ public class ScoreComponent : MonoBehaviour
     public GameObject textScore;
     public GameObject retry;
     private PlayerStatsManager playerStats;
+    
 
     void Awake()
     {
@@ -26,12 +27,10 @@ public class ScoreComponent : MonoBehaviour
 
     void Update()
     {
-        if (playerStats.isAlive)
-        {
-            scoreValue += Time.deltaTime;
-            score.text = "Score : " + Mathf.Round(scoreValue);
-        }
-        else
+        scoreValue += Time.deltaTime;
+        score.text = "Score : " + Mathf.Round(scoreValue);
+
+        if (PlayerStatsManager.heal == 0)
         {
             gameover.SetActive(true);
             textFinalScore.SetActive(true);
@@ -42,5 +41,6 @@ public class ScoreComponent : MonoBehaviour
             Time.timeScale = 0;
         }
         
+      
     }
 }

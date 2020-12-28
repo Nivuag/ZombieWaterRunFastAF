@@ -22,8 +22,8 @@ public class EnnemieController : MonoBehaviour, IPoolable
     {
         if (other.gameObject.layer == 8)
         {
-            Debug.Log("Game Over");
-            Player.GetComponent<PlayerStatsManager>().isAlive = false;
+            //Player.GetComponent<PlayerStatsManager>().isAlive = false;
+            PlayerStatsManager.heal--;
         }
     }
 }
