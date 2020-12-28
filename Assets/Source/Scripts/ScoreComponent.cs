@@ -12,6 +12,7 @@ public class ScoreComponent : MonoBehaviour
     public GameObject gameover;
     public GameObject textFinalScore;
     public GameObject textScore;
+    public GameObject retry;
     private PlayerStatsManager playerStats;
 
     void Awake()
@@ -34,6 +35,7 @@ public class ScoreComponent : MonoBehaviour
         {
             gameover.SetActive(true);
             textFinalScore.SetActive(true);
+            retry.SetActive(true);
             textScore.SetActive(false);
             finalScore.text = "Score final : " + Mathf.Round(scoreValue);
 
