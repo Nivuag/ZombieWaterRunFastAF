@@ -265,6 +265,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPoint: {fileID: 180214584}
+  timeToWait: 5
 --- !u!114 &28534104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13045,7 +13046,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 1858100347}
+  Target: {x: 0, y: 0, z: 0}
   thisAgent: {fileID: 398080008}
+  patrolArea: {fileID: 0}
 --- !u!195 &398080008
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -27865,6 +27868,36 @@ Transform:
   m_Father: {fileID: 859021604}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &495564915
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 495564916}
+  m_Layer: 0
+  m_Name: jumpStart
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &495564916
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 495564915}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 15.64, y: 0.32, z: -1.44}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 975068688}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &511607741
 GameObject:
   m_ObjectHideFlags: 0
@@ -36436,7 +36469,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 1858100347}
+  Target: {x: 0, y: 0, z: 0}
   thisAgent: {fileID: 632094946}
+  patrolArea: {fileID: 0}
 --- !u!95 &632094948
 Animator:
   serializedVersion: 3
@@ -44646,6 +44681,36 @@ MonoBehaviour:
   m_Center: {x: 14.643143, y: 1, z: 0}
   m_Area: 0
   m_AffectedAgents: 00000000
+--- !u!1 &817674605
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 817674606}
+  m_Layer: 0
+  m_Name: jumpEnd
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &817674606
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 817674605}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 15.16, y: -7.505, z: -3.9}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 975068688}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &824917557
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -53152,7 +53217,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 1858100347}
+  Target: {x: 0, y: 0, z: 0}
   thisAgent: {fileID: 958121305}
+  patrolArea: {fileID: 0}
 --- !u!95 &958121307
 Animator:
   serializedVersion: 3
@@ -53460,6 +53527,7 @@ GameObject:
   - component: {fileID: 975068686}
   - component: {fileID: 975068685}
   - component: {fileID: 975068684}
+  - component: {fileID: 975068689}
   m_Layer: 0
   m_Name: pont
   m_TagString: Untagged
@@ -53756,10 +53824,29 @@ Transform:
   m_LocalRotation: {x: -0, y: -0.38268343, z: -0, w: 0.92387956}
   m_LocalPosition: {x: 1.07, y: 7.57, z: 2.17}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 495564916}
+  - {fileID: 817674606}
   m_Father: {fileID: 1870211392}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: -45, z: 0}
+--- !u!191 &975068689
+OffMeshLink:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 975068683}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_AreaIndex: 0
+  m_AgentTypeID: 0
+  m_Start: {fileID: 495564916}
+  m_End: {fileID: 817674606}
+  m_CostOverride: -1
+  m_BiDirectional: 0
+  m_Activated: 1
+  m_AutoUpdatePositions: 0
 --- !u!1 &991604346
 GameObject:
   m_ObjectHideFlags: 0
@@ -60501,6 +60588,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPoint: {fileID: 384185848}
+  timeToWait: 5
 --- !u!114 &1061848576
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73884,6 +73972,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPoint: {fileID: 859021603}
+  timeToWait: 5
 --- !u!114 &1250234992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -104018,6 +104107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPoint: {fileID: 2098017865}
+  timeToWait: 5
 --- !u!114 &1870091942
 MonoBehaviour:
   m_ObjectHideFlags: 0
