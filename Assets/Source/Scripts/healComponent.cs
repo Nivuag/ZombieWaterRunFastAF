@@ -15,7 +15,7 @@ public class healComponent : MonoBehaviour
     {
         if (Collider.tag == "Player")
         {
-            
+            player.health = 1;
             gameObject.SetActive(false);
         }
 
