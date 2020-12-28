@@ -13,6 +13,7 @@ public class ScoreComponent : MonoBehaviour
     public GameObject textFinalScore;
     public GameObject textScore;
     public GameObject retry;
+    public Slider heath;
     private PlayerStatsManager playerStats;
     
 
@@ -27,10 +28,15 @@ public class ScoreComponent : MonoBehaviour
 
     void Update()
     {
-        scoreValue += Time.deltaTime;
-        score.text = "Score : " + Mathf.Round(scoreValue);
+        heath.value = playerStats.heal;
+        if (playerStats.heal > 0)
+        {
 
-        if (PlayerStatsManager.heal == 0)
+            scoreValue += Time.deltaTime;
+            score.text = "Score : " + Mathf.Round(scoreValue);
+        }
+
+        if (playerStats.heal <= 0 || !playerStats.isAlive)
         {
             gameover.SetActive(true);
             textFinalScore.SetActive(true);

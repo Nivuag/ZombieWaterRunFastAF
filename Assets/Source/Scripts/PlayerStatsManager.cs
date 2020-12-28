@@ -6,7 +6,7 @@ public class PlayerStatsManager: MonoBehaviour
 {
     public bool isAlive = true;
 
-    public static float heal;
+    public float heal;
 
     public bool canSprint = true;
 
