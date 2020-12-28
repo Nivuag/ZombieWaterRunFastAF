@@ -11,5 +11,6 @@ public class SceneManagerComponent : MonoBehaviour
     public void Game() => SceneManager.LoadScene("New officiel");
     public void MainMenue() => SceneManager.LoadScene("MainMenue");
     public void Retry() => SceneManager.LoadScene("New officiel");
-    
+    public void Quitter() => Application.Quit();
+
 }
