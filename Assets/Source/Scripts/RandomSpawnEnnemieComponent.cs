@@ -22,6 +22,7 @@ public class RandomSpawnEnnemieComponent : MonoBehaviour
             GameObject ennemie = pool.GetObject();
             ennemie.transform.localPosition = RandomPosition(spawnPoint);
             ennemie.SetActive(true);
+            ennemie.GetComponent<EnnemieController>().patrolArea = spawnPoint;
             score = 0;
             compteurSpawn++;
         }
