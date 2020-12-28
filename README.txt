@@ -7,6 +7,16 @@ Elle peut manger des oranges qui lui redonnent de la vie (et guérit son scorbut
 Elle peut aussi récupérer des potions d'endurance qui remplissent sa jauge d'endurance.
 Le jeu prend place a l'époque des pirates, il y a donc bien des objets reconnaissables à la mer et à cette époque.
 
+Informations géréral: 
+Le but du jeu est simplement de s'enfuir des ennemis.
+Vous pouvez sauter avec la barre d'espace
+Vous pouvez sprinter avec Shift
+Lorsqu'une ennemie vous touche vous perdez de la vie.
+L'endurance se régénère progressivement.
+Lorsque le joueur est dans l'eau, sa barre d'endurance se vide progressivement. Si elle est vide lorsqu'il est dans l'eau le joueur perd la partie.
+Le score augmente progressivement.
+De plus en plus d'ennemis apparaissent sur la carte avec le temps. 
+
 Éléments importans du jeu: 
 
 Génération procédurale:
