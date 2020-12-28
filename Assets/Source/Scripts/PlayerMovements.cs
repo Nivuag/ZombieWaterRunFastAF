@@ -52,11 +52,11 @@ public class PlayerMovements : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("Hi");
+
                     speed = JOGGING_SPEED;
                     if (!swimming)
                     {
-                        Debug.Log("Hi2");
+
 
                         PlayerStats.RechargeSprint();
                         if (!PlayerStats.canSprint)
@@ -65,7 +65,6 @@ public class PlayerMovements : MonoBehaviour
                     }
                     else
                     {
-                        Debug.Log("Hi3");
 
                         PlayerStats.EmptySprint(Time.deltaTime);
                         PlayerStats.isAlive = PlayerStats.canSprint;
