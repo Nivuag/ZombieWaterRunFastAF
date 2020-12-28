@@ -52,12 +52,26 @@ public class PlayerMovements : MonoBehaviour
                 }
                 else
                 {
-
+                    Debug.Log("Hi");
                     speed = JOGGING_SPEED;
-                    PlayerStats.RechargeSprint();
-                    if (!PlayerStats.canSprint)
-                        if (PlayerStats.CurrentSprintCharge >= PlayerStats.sprintDuration)
-                            PlayerStats.canSprint = true;
+                    if (!swimming)
+                    {
+                        Debug.Log("Hi2");
+
+                        PlayerStats.RechargeSprint();
+                        if (!PlayerStats.canSprint)
+                            if (PlayerStats.CurrentSprintCharge >= PlayerStats.sprintDuration)
+                                PlayerStats.canSprint = true;
+                    }
+                    else
+                    {
+                        Debug.Log("Hi3");
+
+                        PlayerStats.EmptySprint(Time.deltaTime);
+                        PlayerStats.isAlive = PlayerStats.canSprint;
+                        if (PlayerStats.CurrentSprintCharge <= 0)
+                            PlayerStats.canSprint = false;
+                    }
                 }
             else
                 verticalSpeed -= gravity * Time.deltaTime;
@@ -128,11 +142,11 @@ public class PlayerMovements : MonoBehaviour
                 CharacterController.Move(gravityMove * Time.deltaTime + (move * Time.deltaTime)); //jumpForwardMomentum);
 
             }
-
+            swimming = this.gameObject.transform.position.y < -2.50f;
             animator.SetBool("isSprinting", sprinting);
             animator.SetBool("isRunning", running);
-            animator.SetBool("isSwimming", this.gameObject.transform.position.y < -2.50f); // Solution de bastard mais le collider est oof
-
+            animator.SetBool("isSwimming", swimming); // Solution de bastard mais le collider est oof
+            
 
         }
         else
