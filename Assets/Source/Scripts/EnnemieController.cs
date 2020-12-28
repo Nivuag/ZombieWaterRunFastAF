@@ -17,10 +17,10 @@ public class EnnemieController : MonoBehaviour, IPoolable
 
     private float DETECTION_DISTANCE = 10;
     private float ARRIVAL_DISTANCE = 3;
-    private float ABANDON_DISTANCE = 20;
+    private float ABANDON_DISTANCE = 15;
 
     bool Pursuing = false;
-
+    
     void Update()
     {
 
