@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StaminaRefill : MonoBehaviour
+public class healComponent : MonoBehaviour
 {
     PlayerStatsManager player;
 
@@ -14,11 +14,11 @@ public class StaminaRefill : MonoBehaviour
     void OnTriggerEnter(Collider Collider)
     {
         if (Collider.tag == "Player")
-        { 
-            player.RechargeSprint(1000);
+        {
+            
             gameObject.SetActive(false);
         }
-            
+
 
     }
 }
