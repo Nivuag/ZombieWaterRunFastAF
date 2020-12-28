@@ -8,7 +8,7 @@ public class PlayerStatsManager: MonoBehaviour
 
     public bool canSprint = true;
 
-    const float MIN_SPRINT_DURATION = 0;
+    public const float MIN_SPRINT_DURATION = 0;
     // En secondes
     public float sprintDuration = 10;
     // Per seconds
