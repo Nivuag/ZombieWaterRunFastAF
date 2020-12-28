@@ -21,4 +21,5 @@ public class healComponent : MonoBehaviour
 
 
     }
+    
 }

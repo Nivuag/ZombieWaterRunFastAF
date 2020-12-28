@@ -4,15 +4,31 @@ using UnityEngine;
 
 public class RespawnPowerUpComponent : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
+    public List<GameObject> oranges;
+    public List<GameObject> potions;
     void Update()
     {
-        
+        foreach (var item in oranges)
+        {
+            if (!item.active)
+            {
+                StartCoroutine(Timer(item));
+                
+            }
+        }
+        foreach (var item in potions)
+        {
+            if (!item.active)
+            {
+                StartCoroutine(Timer(item));
+            }
+        }
     }
+    IEnumerator Timer(GameObject item)
+    {
+        yield return new WaitForSeconds(1);
+        item.SetActive(true);
+    }
+
 }
